@@ -1,7 +1,5 @@
 // Global settings file containing player information
 
-import {overmindSignature} from './do-not-modify';
-
 function getUsername(): string {
 	for (let i in Game.rooms) {
 		let room = Game.rooms[i];
@@ -32,6 +30,7 @@ export var myUsername: string = getUsername(); // Your username
 // other bots.
 
 let suffix = 'DnD'; // Put your signature suffix here; will be signed as "Overmind Screeps AI: <suffix>"
+let overmindSignature = 'Overmind Screeps AI'; // <DO-NOT-MODIFY> see license for details
 
 export var signature = overmindSignature + (suffix ? ': ' + suffix : ''); // <DO-NOT-MODIFY> see license for details
 
