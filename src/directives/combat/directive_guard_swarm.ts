@@ -21,7 +21,10 @@ export class DirectiveGuardSwarm extends Directive {
 
 	constructor(flag: Flag) {
 		super(flag);
-		this.overlords.guard = new GuardSwarmOverlord(this);
+		this.overlords = {
+			guard: new GuardSwarmOverlord(this)
+		};
+		this.relocateFrequency = 0;
 	}
 
 	init(): void {

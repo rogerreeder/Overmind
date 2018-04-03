@@ -87,8 +87,10 @@ export class UpgradeSite extends HiveCluster {
 		let progress = `${Math.floor(this.controller.progress / 1000)}K`;
 		let progressTotal = `${Math.floor(this.controller.progressTotal / 1000)}K`;
 		let percent = `${Math.floor(100 * this.controller.progress / this.controller.progressTotal)}`;
+		let downGradeIn = `${this.controller.ticksToDowngrade}`;
 		let info = [
 			`Progress: ${progress}/${progressTotal} (${percent}%)`,
+			`Downgrade in ${downGradeIn}`
 		];
 		Visualizer.showInfo(info, this);
 	}

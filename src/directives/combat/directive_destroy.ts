@@ -16,7 +16,9 @@ export class DirectiveDestroy extends Directive {
 
 	constructor(flag: Flag) {
 		super(flag);
-		this.overlords.destroy = new DestroyerOverlord(this);
+		this.overlords = {
+			destroy: new DestroyerOverlord(this)
+		};
 	}
 
 	init(): void {

@@ -31,7 +31,7 @@ export var myUsername: string = getUsername(); // Your username
 // will eventually include features limiting aggression toward new players on public servers and preferably targeting
 // other bots.
 
-let suffix = ''; // Put your signature suffix here; will be signed as "Overmind Screeps AI: <suffix>"
+let suffix = 'DnD'; // Put your signature suffix here; will be signed as "Overmind Screeps AI: <suffix>"
 
 export var signature = overmindSignature + (suffix ? ': ' + suffix : ''); // <DO-NOT-MODIFY> see license for details
 

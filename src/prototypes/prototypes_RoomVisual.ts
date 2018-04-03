@@ -114,7 +114,7 @@ const colors = {
 	outline         : '#8FBB93',
 	speechText      : '#000000',
 	speechBackground: '#aebcc4',
-	infoBoxGood     : '#09ff00',
+	infoBoxGood     : '#00fffe',
 	infoBoxBad      : '#ff2600'
 };
 

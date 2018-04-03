@@ -167,13 +167,14 @@ export class Overseer {
 				}
 			}
 		}
-		let stringReport: string[] = [`Creep usage for ${this.colony.name}:`];
+		let stringReport: string[] = [`Creep usage for ${this.colony.name}: log level ${log.level.toString()}`];
 		let padLength = _.max(_.map(_.keys(roleOccupancy), str => str.length)) + 2;
 		for (let role in roleOccupancy) {
 			let [current, needed] = roleOccupancy[role];
 			if (needed > 0) {
 				stringReport.push('| ' + `${role}:`.padRight(padLength) +
-								  `${Math.floor(100 * current / needed)}%`.padLeft(4));
+								  `${Math.floor(100 * current / needed)}%`
+								  .padLeft(4));
 			}
 		}
 		Visualizer.colonyReport(this.colony.name, stringReport);
