@@ -15,7 +15,6 @@
 'use strict';
 // Import global settings and prototypes
 import './console/globals';
-import './settings/settings_user';
 import './prototypes/prototypes_Creep';
 import './prototypes/prototypes_Flag';
 import './prototypes/prototypes_RoomObject';
@@ -25,6 +24,7 @@ import './prototypes/prototypes_Room';
 import './prototypes/prototypes_Structures';
 import './prototypes/prototypes_other';
 import './tasks/prototypes';
+import './settings/settings_user';
 // Configuration, logging, and profiling
 import {log} from './lib/logger/log';
 import {sandbox} from './sandbox';
@@ -33,9 +33,9 @@ import OM from './Overmind';
 import {Console} from './console/console';
 import {Stats} from './stats/stats';
 import {USE_PROFILER} from './settings/config';
-import * as Profiler from 'screeps-profiler';
+import profiler from 'screeps-profiler';
 
-if (USE_PROFILER) Profiler.enable();
+if (USE_PROFILER) profiler.enable();
 
 // Execute this every global reset
 global.log = log;
@@ -55,6 +55,6 @@ function main(): void {
 }
 
 export function loop(): void {
-	Profiler.wrap(main);
+	profiler.wrap(main);
 }
 
