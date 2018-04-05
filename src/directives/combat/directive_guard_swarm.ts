@@ -20,7 +20,7 @@ export class DirectiveGuardSwarm extends Directive {
 	private relocateFrequency: number;
 
 	constructor(flag: Flag) {
-		super(flag);
+		super(flag,4);
 		this.overlords = {
 			guard: new GuardSwarmOverlord(this)
 		};

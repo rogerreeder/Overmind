@@ -21,7 +21,7 @@ export class DirectiveColonize extends Directive {
 	};
 
 	constructor(flag: Flag) {
-		super(flag);
+		super(flag,4);
 		// Register incubation status
 		this.toColonize = this.room ? Overmind.Colonies[Overmind.colonyMap[this.room.name]] : undefined;
 		this.overlords = {

@@ -18,7 +18,7 @@ export class DirectiveGuard extends Directive {
 	private relocateFrequency: number;
 
 	constructor(flag: Flag) {
-		super(flag);
+		super(flag, 3);
 		this.overlords.guard = new GuardOverlord(this);
 		this.relocateFrequency = 10; // Relocate the flag to follow enemy movement every n ticks
 	}

@@ -244,12 +244,12 @@ export class Zerg {
 	}
 
 	get needsBoosts(): boolean {
-		if (this.overlord) {
+		/*if (this.overlord) {
 			let neededBoosts = this.overlord.boosts[this.roleName];
 			if (neededBoosts) {
 				return _.difference(neededBoosts, this.boosts).length > 0;
 			}
-		}
+		}*/
 		return false;
 	}
 

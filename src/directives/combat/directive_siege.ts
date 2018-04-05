@@ -22,7 +22,7 @@ export class DirectiveSiege extends Directive {
 	private recoveryFlag: Flag | undefined;
 
 	constructor(flag: Flag) {
-		super(flag);
+		super(flag, 4);
 		this.recoveryFlag = Game.flags[this.name + ':healPoint'];
 		this.overlords.siege = new SiegeOverlord(this);
 	}
@@ -42,7 +42,7 @@ export class DirectiveSiege extends Directive {
 	calculateWaypoint(): RoomPosition | undefined {
 		// Calculate the recovery waypoint
 		let startPos = this.colony.hatchery ? this.colony.hatchery.pos : this.colony.pos;
-		let ret = Pathing.findTravelPath(startPos, this.pos, {range: 50});
+		let ret = Pathing.findTravelPath(startPos, this.pos, {range: 250});
 		if (!ret.incomplete) {
 			let path = ret.path;
 			// Place the waypoint flag three squares before the last position in the previous room

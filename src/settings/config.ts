@@ -8,7 +8,7 @@ export const USE_PROFILER: boolean = false;
 /**
  * Debug level for log output
  */
-export const LOG_LEVEL: number = LogLevels.ERROR;
+export const LOG_LEVEL: number = LogLevels.INFO;
 
 /**
  * Prepend log output with current tick number.

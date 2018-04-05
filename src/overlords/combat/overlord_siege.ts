@@ -81,7 +81,12 @@ export class SiegeOverlord extends CombatOverlord {
 			if (sieger.hits > this.settings.retreatHitsPercent * sieger.hitsMax) {
 				// If you're in the hostile room and have sufficient health, go siege
 				let siegeTarget = this.findSiegeTarget(sieger);
-				if (siegeTarget) this.siegeActions(sieger, siegeTarget);
+				if (siegeTarget) {
+					sieger.say("JOY!!!");
+					this.siegeActions(sieger, siegeTarget);
+				} else {
+					sieger.say("NO JOY");
+				}
 			} else {
 				// If you're in hostile room and health is getting low, retreat
 				this.retreatActions(sieger, this.recoveryWaypoint);
@@ -89,10 +94,12 @@ export class SiegeOverlord extends CombatOverlord {
 		} else {
 			if (sieger.hits == sieger.hitsMax) {
 				// If you're at full health and outside the room, go back in
+				sieger.say("charge");
 				sieger.travelTo(this.pos, _.merge({range: 50}, this.moveOpts));
 			} else {
 				// If you're below full health and outside the room, heal up first
 				this.retreatActions(sieger, this.recoveryWaypoint);
+				sieger.say("healme");
 			}
 		}
 	}

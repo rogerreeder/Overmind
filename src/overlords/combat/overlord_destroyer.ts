@@ -25,7 +25,7 @@ export class HealerSetup extends CreepSetup {
 
 	constructor() {
 		super(HealerSetup.role, {
-			pattern  : [TOUGH, HEAL, HEAL, MOVE, MOVE, MOVE],
+			pattern  : [HEAL, MOVE],
 			sizeLimit: Infinity,
 		});
 	}
@@ -79,6 +79,7 @@ export class DestroyerOverlord extends CombatOverlord {
 	}
 
 	private retreatActions(attacker: Zerg, healer: Zerg): void {
+		if(attacker !== undefined && !attacker.spawning && attacker.hits < attacker.hitsMax && healer.pos.isNearTo(attacker.pos.x,attacker.pos.y)) healer.heal(attacker,false);
 		this.pairwiseMove(healer, attacker, this.fallback);
 		if (attacker.hits > this.settings.reengageHitsPercent * attacker.hits &&
 			healer.hits > this.settings.reengageHitsPercent * healer.hits) {
@@ -101,6 +102,7 @@ export class DestroyerOverlord extends CombatOverlord {
 		let healer = this.findPartner(attacker, this.healers);
 		if (!healer || healer.spawning || healer.needsBoosts) { // you don't have an active partner
 			// Wait near the colony controller if you don't have a healer
+			attacker.say("medic?");
 			if (attacker.pos.getMultiRoomRangeTo(this.colony.controller.pos) > 5) {
 				attacker.travelTo(this.colony.controller);
 			} else {
@@ -113,12 +115,15 @@ export class DestroyerOverlord extends CombatOverlord {
 				attacker.memory.retreating = true;
 			}
 			if (attacker.memory.retreating) {
+				attacker.say("retreat");
 				this.retreatActions(attacker, healer);
 			}
 			// Move to room and then perform attacking actions
 			if (!attacker.inSameRoomAs(this)) {
+				attacker.say("move out");
 				this.pairwiseMove(attacker, healer, this.pos);
 			} else {
+				attacker.say("attack");
 				this.attackActions(attacker, healer);
 			}
 		}
@@ -173,6 +178,7 @@ export class DestroyerOverlord extends CombatOverlord {
 		for (let attacker of this.attackers) {
 			if (attacker.isIdle) {
 				if (attacker.needsBoosts) {
+					attacker.say("Boost?");
 					this.handleBoosts(attacker);
 				} else {
 					this.handleSquad(attacker);
@@ -185,6 +191,7 @@ export class DestroyerOverlord extends CombatOverlord {
 		for (let healer of this.healers) {
 			if (healer.isIdle) {
 				if (healer.needsBoosts) {
+					healer.say("Boost?");
 					this.handleBoosts(healer);
 				} else {
 					this.handleHealer(healer);

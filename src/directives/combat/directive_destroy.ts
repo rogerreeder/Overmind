@@ -15,7 +15,7 @@ export class DirectiveDestroy extends Directive {
 	};
 
 	constructor(flag: Flag) {
-		super(flag);
+		super(flag, 4);//Destroyers need at least a level 4
 		this.overlords = {
 			destroy: new DestroyerOverlord(this)
 		};

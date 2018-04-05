@@ -2,7 +2,7 @@ import {Directive} from '../Directive';
 import {profile} from '../../profiler/decorator';
 
 
-interface DirectiveLogisticsReqeustMemory extends FlagMemory {
+interface DirectiveLogisticsRequestMemory extends FlagMemory {
 	request?: { [resourceType: string]: number };
 	storeCapacity?: number;
 	provider: boolean;
@@ -20,7 +20,7 @@ export class DirectiveLogisticsRequest extends Directive {
 	private _store: StoreDefinition;
 	private _drops: { [resourceType: string]: Resource[] };
 
-	memory: DirectiveLogisticsReqeustMemory;
+	memory: DirectiveLogisticsRequestMemory;
 
 	constructor(flag: Flag) {
 		super(flag);

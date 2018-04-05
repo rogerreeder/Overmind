@@ -20,7 +20,7 @@ export class DirectiveInvasionDefense extends Directive {
 	private relocateFrequency: number;
 
 	constructor(flag: Flag) {
-		super(flag);
+		super(flag,4);
 		let bigInvaders = _.filter(this.room.hostiles, hostile => hostile.body.length >= 30);
 		let boostedInvasion = _.filter(bigInvaders, invader => invader.boosts.length > 0).length > 0;
 		this.overlords.archer = new ArcherDefenseOverlord(this, boostedInvasion);
